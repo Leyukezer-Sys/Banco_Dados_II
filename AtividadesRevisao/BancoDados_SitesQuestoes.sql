@@ -153,6 +153,6 @@ INSERT INTO alternativas (gabarito_alter, texto_alter, fk_questao_id) VALUES
 (FALSE, "A estrutura switch case pode ser usada para criar loops.",5),
 (FALSE, "A estrutura switch case oferece mais flexibilidade na manipulação de exceções.",5);
 
-UPDATE Questao SET nivel_ques = "EXTREMAMENTE-DIFÍCIL" WHERE id_ques = 3
+UPDATE Questao SET nivel_ques = "EXTREMAMENTE-DIFÍCIL" WHERE id_ques = 3;
  
 #DROP DATABASE SitesQuestoes_Leyukezer;
