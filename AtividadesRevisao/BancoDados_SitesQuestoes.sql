@@ -100,8 +100,6 @@ INSERT INTO assunto (texto_ass, fk_disciplina_id) VALUES ("Encapsulamento", 2), 
 														 ("Objetos", 2), ("Comandos DML", 1), ("IF e ELSE", 3),
                                                          ("Classes Estáticas", 2), ("Revisão Modelo Lógico", 1), ("SWITCH CASE", 3);
 
-#SELECT a.texto_ass as "Assunto", d.nome_dis as "Disciplina" FROM assunto a INNER JOIN disciplina d ON fk_disciplina_id = id_dis;
-
 UPDATE disciplina SET nome_dis = "PROGRAMAÇÃO ORIENTADA AO OBJETO" WHERE id_dis = 2;
 
 INSERT INTO Banca (nome_ban , sigla_ban) VALUES ("VESTIBULAR DA UNIVERSIDADE ESTADUAL PAULISTA", "VUNESP"), ("INSTITUTO BRASILEIRO DE FORMAÇÃO E CAPACITAÇÃO","IBFC"),
@@ -154,5 +152,9 @@ INSERT INTO alternativas (gabarito_alter, texto_alter, fk_questao_id) VALUES
 (FALSE, "A estrutura switch case oferece mais flexibilidade na manipulação de exceções.",5);
 
 UPDATE Questao SET nivel_ques = "EXTREMAMENTE-DIFÍCIL" WHERE id_ques = 3;
+
+SELECT a.texto_ass as "Assunto", d.nome_dis as "Disciplina" FROM assunto a INNER JOIN disciplina d ON fk_disciplina_id = id_dis;
+
+#DELETE FROM Disciplina WHERE id_dis = 1;
  
 #DROP DATABASE SitesQuestoes_Leyukezer;
