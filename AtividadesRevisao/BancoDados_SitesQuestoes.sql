@@ -82,12 +82,6 @@ ALTER TABLE Questao ADD data_cadastro_quest DATE NOT NULL AFTER modalidade_ques;
 
 -- DML
 
-INSERT INTO Usuario (nome_usu, email_usu, data_nascimento_usu,data_cadastro_usu) VALUES("Fulano", "accont@email.com", '2000-02-18', CURDATE());
-INSERT INTO Usuario (nome_usu, email_usu, data_nascimento_usu,data_cadastro_usu) VALUES("JUCK", "juck@email.com", '2000-09-09', CURDATE());
-INSERT INTO Usuario (nome_usu, email_usu, data_nascimento_usu,data_cadastro_usu) VALUES("LUCK", "luck@email.com", '2000-05-10', CURDATE());
-INSERT INTO Usuario (nome_usu , email_usu, data_nascimento_usu,data_cadastro_usu) VALUES("BEATH", "beath@email.com", '2000-03-28', CURDATE());
-INSERT INTO Usuario (nome_usu, email_usu, data_nascimento_usu,data_cadastro_usu) VALUES("AGABE", "agabe@email.com", '2000-12-25', CURDATE());
-
 INSERT INTO Professor (nome_prof, telefone_prof, email_prof) VALUES ("AVAST", "(69) 00000-0000", "avast@email.com");
 INSERT INTO Professor (nome_prof, telefone_prof, email_prof) VALUES ("GHOST", "(69) 00000-0000", "ghost@email.com");
 INSERT INTO Professor (nome_prof, telefone_prof, email_prof) VALUES ("STEVE", "(69) 00000-0000", "minecraft@email.com");
@@ -152,6 +146,53 @@ INSERT INTO alternativas (gabarito_alter, texto_alter, fk_questao_id) VALUES
 (FALSE, "A estrutura switch case oferece mais flexibilidade na manipulação de exceções.",5);
 
 UPDATE Questao SET nivel_ques = "EXTREMAMENTE-DIFÍCIL" WHERE id_ques = 3;
+
+ALTER TABLE Usuario ADD ativo_usu BOOL DEFAULT TRUE;
+ALTER TABLE Usuario ADD sexo_usu CHAR AFTER email_usu;
+INSERT INTO usuario (id_usu, nome_usu, email_usu,sexo_usu, data_cadastro_usu, data_nascimento_usu, ativo_usu)
+VALUES 
+	   (null, 'Lucas da Silva Guilherme','lucassguilherme159@gmail.com','M', '2023-09-13', '1994-04-10',TRUE),
+	   (null, 'Ádrian Henrique Ferreira','adrianhenriqueferreiraopo@gmail.com','M', '2023-09-13', '2000-01-01',true),
+	   (null, 'Rubens Gomes da Silva','rubinho_paraf@hotmail.com','M', '2023-09-13', '1977-05-07',TRUE),
+       (null, 'Ana Beatriz Tomaz de Sá','anabeatrizts.12@gmail.com','F', '2023-09-13', '2003-12-12',FALSE),
+       (null, 'Andressa Lorena de Moura Marinho','andressalorena09@gmail.com','F', '2023-09-13', '2001-04-02',TRUE),
+       (null, 'Anny Stele Fernandes da Silva','annysfs@gmail.com', 'F','2023-09-13', '1994-05-20',TRUE),
+       (null, 'Bruno Santos Ferreira','brunosfe.info@gmail.com', 'M','2023-09-13', '2003-06-29',TRUE),
+       (null, 'Katielly Bordin Santos','katiellyscherbatsky@gmail.com','F', '2023-09-13', '2001-06-26',TRUE),
+       (null, 'Cenilza da Silva Lanes','cenilza.lanes@estudante.ifro.edu.br','F', '2023-09-13', '1986-03-10',FALSE),
+       (null, 'Douglas Melo Cutisque','douglaskutisque@gmail.com','M', '2023-09-13', '1986-05-12',TRUE),
+       (null, 'Lhuany Thainara Motta Euzébio','lhuany.euzebio@estudante.ifro.edu.br','F', '2023-09-13', '2001-07-01',TRUE),
+       (null, 'Maria Júlia Souza de Albuquerque Lins','majuhlins76@gmail.com','F', '2023-09-13', '2003-09-11',TRUE),
+       (null, 'Eidy Naray Alves da Silva','eidyalves3@gmail.com','F', '2023-09-13', '2003-12-10',TRUE),
+       (null, 'Raiane Alves de Macedo','raianealvesmacedo15@gmail.com','F', '2023-09-13', '2005-02-09',TRUE),
+       (null, 'Fabiano Brito de Souza','fabianobrito99.fbs@gmail.com','M', '2023-09-13', '2000-09-09',TRUE),
+       (null, 'Igor do Nascimento Mendes','igor.mendes.3939503@gmail.com','M', '2023-09-13', '1998-03-06',TRUE),
+       (null, 'Jefferson Borges Saldanha','jeffersongege@hotmail.com.br','M', '2023-09-13', '1990-01-03',FALSE),
+       (null, 'Amanda Teodoro Cunha','amandateodoro1408@gmail.com','F', '2023-09-13', '2003-09-02',true),
+       (null, 'Leidervan Ortiz Francisqueti de Oliveira','leidervan1234@gmail.com','M', '2023-09-13', '2003-02-08',TRUE),
+       (null, 'Leyukezer Cruz de Lima','leyukezer@gmail.com','M', '2023-09-13', '2002-06-21',TRUE),
+       (null, 'Edson Fernando Souza Bezerra','ed.f3rn@gmail.com','M', '2023-09-13', '2001-06-08',TRUE),
+       (null, 'Luan Mateus Teofilo de Lima','luanmateus2002@gmail.com', 'M', '2023-09-13', '2001-08-28',TRUE),
+       (null, 'Lucas da Silva Nunes','lucas.silvaifro@gmail.com','M', '2023-09-13', '2002-09-13',TRUE),
+       (null, 'Naiany Moreira França','naianymfranca@gmail.com','F', '2023-09-13', '2003-09-18',TRUE),
+       (null, 'Luiz Fernando da Silva Ramos','Luiz11fernando@hotmail.com','M', '2023-09-13', '2000-11-16',TRUE),
+       (null, 'Marcos Edson Anerio dos Santos','marcosedsonanerio@hotmail.com','M', '2023-09-13', '2002-10-01',TRUE),
+       (null, 'Natália da Silva Fernandes','fernandesnataliadasilva454@gmail.com','F', '2023-09-13', '2003-05-28',TRUE),
+       (null, 'Vitor dos Reis Eugenio','vitorreiseugenio@gmail.com','M', '2023-09-13', '2003-04-18',FALSE),
+       (null, 'Sabrina Rodrigues dos Santos','sabrina.ifro@gmail.com','F', '2023-09-13', '2002-08-02',FALSE),
+       (null, 'Thiago Apolinário Câmara Bráz','cartuchomais@hotmail.com','M', '2023-09-13', '1981-07-06',TRUE),
+       (null, 'Vitor Viana Silva','vitorpoke01@gmail.com','M', '2023-09-13', '2001-09-16',TRUE),
+	   (null, 'Elias de Abreu Domingos da Silva','elias.silva@ifro.edu.br','M', '2023-09-13', '1992-07-22',TRUE);
+
+SELECT nome_usu as "Nome Usuario", email_usu as "Email Usuario", data_nascimento_usu as "Data Nascimento Usuario" FROM Usuario ORDER BY nome_usu;
+
+SELECT nome_usu FROM Usuario WHERE sexo_usu <> 'M' AND ativo_usu = TRUE;
+
+SELECT email_usu FROM Usuario WHERE nome_usu LIKE "%";
+
+SELECT id_usu, nome_usu as "Usuarios Inativos" FROM Usuario WHERE ativo_usu = FALSE;
+
+UPDATE Usuario SET ativo_usu = TRUE WHERE id_usu = 29;
 
 SELECT a.texto_ass as "Assunto", d.nome_dis as "Disciplina" FROM assunto a INNER JOIN disciplina d ON fk_disciplina_id = id_dis;
 
