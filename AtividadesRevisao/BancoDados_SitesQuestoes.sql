@@ -184,15 +184,17 @@ VALUES
        (null, 'Vitor Viana Silva','vitorpoke01@gmail.com','M', '2023-09-13', '2001-09-16',TRUE),
 	   (null, 'Elias de Abreu Domingos da Silva','elias.silva@ifro.edu.br','M', '2023-09-13', '1992-07-22',TRUE);
 
+UPDATE Usuario SET ativo_usu = TRUE WHERE id_usu = 29;
+
 SELECT nome_usu as "Nome Usuario", email_usu as "Email Usuario", data_nascimento_usu as "Data Nascimento Usuario" FROM Usuario ORDER BY nome_usu;
 
 SELECT nome_usu FROM Usuario WHERE sexo_usu <> 'M' AND ativo_usu = TRUE;
 
-SELECT nome_usu FROM Usuario WHERE nome_usu LIKE "L%"AND nome_usu LIKE "%A";
+SELECT nome_usu FROM Usuario WHERE email_usu LIKE "leyukezer@gmail.com";
 
 SELECT id_usu, nome_usu as "Usuarios Inativos" FROM Usuario WHERE ativo_usu = FALSE;
 
-UPDATE Usuario SET ativo_usu = TRUE WHERE id_usu = 29;
+SELECT nome_usu, email_usu, DATE_FORMAT(data_nascimento_usu,'%d/%m/%Y') as "Data Nascimento Usuario" FROM Usuario WHERE data_nascimento_usu >= '1990-01-01' AND data_nascimento_usu <= '1999-12-31' ORDER BY nome_usu;
 
 SELECT a.texto_ass as "Assunto", d.nome_dis as "Disciplina" FROM assunto a INNER JOIN disciplina d ON fk_disciplina_id = id_dis;
 
