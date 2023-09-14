@@ -188,7 +188,7 @@ SELECT nome_usu as "Nome Usuario", email_usu as "Email Usuario", data_nascimento
 
 SELECT nome_usu FROM Usuario WHERE sexo_usu <> 'M' AND ativo_usu = TRUE;
 
-SELECT email_usu FROM Usuario WHERE nome_usu LIKE "%";
+SELECT nome_usu FROM Usuario WHERE nome_usu LIKE "L%"AND nome_usu LIKE "%A";
 
 SELECT id_usu, nome_usu as "Usuarios Inativos" FROM Usuario WHERE ativo_usu = FALSE;
 
