@@ -1,0 +1,9 @@
+CREATE DATABASE Tema2_Artesanato;
+
+USE Tema2_Artesanato;
+
+CREATE TABLE Estado(
+id_estado INT PRIMARY KEY AUTO_INCREMENT, 
+nome_est VARCHAR(50) NOT NULL, 
+uf_est VARCHAR(3) NOT NULL UNIQUE
+);
