@@ -56,7 +56,7 @@ FOREIGN KEY (fk_id_endereco) REFERENCES Endereco(id_endereco)
 );
 
 CREATE TABLE Artesao(
-id_art INT PRIMARY KEY AUTO_INCREMENT,
+id_artesao INT PRIMARY KEY AUTO_INCREMENT,
 nome_art VARCHAR(20) NOT NULL,
 sexo_art VARCHAR(10) NOT NULL,
 telefone_art VARCHAR(16) NOT NULL,
@@ -72,4 +72,71 @@ telefone_for VARCHAR(16) NOT NULL,
 fk_id_endereco INT NOT NULL,
 FOREIGN KEY (fk_id_endereco) REFERENCES Endereco(id_endereco)
 );
+ 
+ CREATE TABLE Servico (
+id_servico INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(30) NOT NULL,
+valor DOUBLE NOT NULL,
+descricao TEXT,
+observacao VARCHAR(30) NOT NULL,
+fk_id_artesao INT NOT NULL,
+FOREIGN KEY (fk_id_artesao) REFERENCES Artesao(id_artesao)
+);
 
+CREATE TABLE Produto (
+ id_produto INT PRIMARY KEY AUTO_INCREMENT,
+ nome_prod VARCHAR(30) NOT NULL,
+ quantidade_prod INT NOT NULL,
+ valor_prod DOUBLE NOT NULL,
+ cor_prod VARCHAR(15) NOT NULL,
+ tamanho_prod VARCHAR(10) NOT NULL,
+ descricao_prod TEXT,
+ imagem_prod BLOB,
+ avaliacao_prod INT,
+ fk_id_estoque INT NOT NULL,
+ fk_id_fornecedor INT NOT NULL,
+ FOREIGN KEY(fk_id_estoque) REFERENCES Estoque(id_estoque),
+ FOREIGN KEY (fk_id_fornecedor) REFERENCES Fornecedor(id_fornecedor)
+ );
+ 
+CREATE TABLE Produto_Categoria (
+id_produto_categoria INT PRIMARY KEY AUTO_INCREMENT,
+fk_id_categoria INT NOT NULL,
+fk_id_produto INT NOT NULL,
+FOREIGN KEY(fk_id_categoria) REFERENCES Categoria(id_categoria),
+FOREIGN KEY (fk_id_produto) REFERENCES Produto(id_produto)
+);
+
+CREATE TABLE Itens_Venda (
+id_itens_venda INT PRIMARY KEY AUTO_INCREMENT,
+quantidade_int_vend INT NOT NULL,
+fk_id_servico INT,
+fk_id_produto INT,
+FOREIGN KEY (fk_id_servico) REFERENCES Servico(id_servico),
+FOREIGN KEY (fk_id_produto) REFERENCES Produto(id_produto)
+);
+
+CREATE TABLE Venda (
+id_venda INT PRIMARY KEY,
+valor_total_vend DOUBLE NOT NULL,
+forma_pag_vend VARCHAR(20) NOT NULL,
+cupom_desc_vend DOUBLE NOT NULL,
+fk_id_usuario INT NOT NULL,
+fk_id_itens_venda INT NOT NULL,
+FOREIGN KEY (fk_id_usuario) REFERENCES Usuario(id_usuario),
+FOREIGN KEY (fk_id_itens_venda) REFERENCES Itens_Venda(id_itens_venda)
+);
+
+CREATE TABLE Entrega (
+id_entrega INT PRIMARY KEY AUTO_INCREMENT,
+remetente_ent VARCHAR(30) NOT NULL,
+destinatario_ent VARCHAR(30) NOT NULL,
+prazo_ent DATETIME NOT NULL,
+cod_rastreio_ent VARCHAR(30) NOT NULL,
+fk_id_endereco INT NOT NULL,
+fk_id_transportadora INT NOT NULL,
+fk_id_venda INT NOT NULL,
+FOREIGN KEY (fk_id_endereco) REFERENCES Endereco(id_endereco),
+FOREIGN KEY (fk_id_transportadora) REFERENCES Transportadora(id_transportadora),
+FOREIGN KEY (fk_id_venda) REFERENCES Venda(id_venda)
+);
