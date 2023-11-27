@@ -109,25 +109,26 @@ FOREIGN KEY(fk_id_categoria) REFERENCES Categoria(id_categoria),
 FOREIGN KEY (fk_id_produto) REFERENCES Produto(id_produto)
 );
 
-CREATE TABLE IF NOT EXISTS Itens_Venda (
-id_itens_venda INT PRIMARY KEY AUTO_INCREMENT,
-quantidade_int_vend INT NOT NULL,
-fk_id_servico INT,
-fk_id_produto INT,
-FOREIGN KEY (fk_id_servico) REFERENCES Servico(id_servico),
-FOREIGN KEY (fk_id_produto) REFERENCES Produto(id_produto)
-);
-
 CREATE TABLE IF NOT EXISTS Venda (
 id_venda INT PRIMARY KEY,
 valor_total_vend DOUBLE NOT NULL,
 forma_pag_vend VARCHAR(20) NOT NULL,
 cupom_desc_vend DOUBLE NOT NULL,
 fk_id_usuario INT NOT NULL,
-fk_id_itens_venda INT NOT NULL,
-FOREIGN KEY (fk_id_usuario) REFERENCES Usuario(id_usuario),
-FOREIGN KEY (fk_id_itens_venda) REFERENCES Itens_Venda(id_itens_venda)
+FOREIGN KEY (fk_id_usuario) REFERENCES Usuario(id_usuario)
 );
+
+CREATE TABLE IF NOT EXISTS Itens_Venda (
+id_itens_venda INT PRIMARY KEY AUTO_INCREMENT,
+quantidade_int_vend INT NOT NULL,
+fk_id_servico INT,
+fk_id_produto INT,
+fk_id_venda INT NOT NULL,
+FOREIGN KEY (fk_id_servico) REFERENCES Servico(id_servico),
+FOREIGN KEY (fk_id_produto) REFERENCES Produto(id_produto),
+FOREIGN KEY (fk_id_venda) REFERENCES Venda(id_venda)
+);
+
 
 CREATE TABLE IF NOT EXISTS Entrega (
 id_entrega INT PRIMARY KEY AUTO_INCREMENT,
@@ -169,6 +170,20 @@ INSERT INTO Artesao VALUES (null, "Alvincy Diona Charllie", "FEMININO", "(68)986
 
 INSERT INTO Fornecedor VALUES (NULL, "Xariff MDF Provençais", 90231618000155, "(22)3053-3810", 4);
 
-INSERT INTO Servico VALUES (NULL, "");
+INSERT INTO Servico VALUES (NULL, "bordar tecido", 267.50, "Bordar qualquer tipo de tecido", "somente tecidos e panos simples...", 1);
 
-SELECT * FROM Usuario;
+INSERT INTO Produto VALUES (NULL, "capa de almofada", 15, 36.75, "Roxo", "30cm", "capa de almofadas para travesseiros caseiros como de estofados", NULL,NULL, 1,1);
+
+UPDATE Estoque SET quantidade_est = 15 WHERE id_estoque = 1;
+
+INSERT INTO Produto_Categoria VALUES (NULL, 1,1);
+
+INSERT INTO Venda VALUES (NULL, 183.75, "DINHEIRO", NULL, 1);
+
+INSERT INTO Itens_Venda VALUES (NULL, 5, NULL,1,1);
+
+INSERT INTO Entrega VALUES (NULL, "USUARIO", "CASA DO USUARIO", CURDATE(), "NABR0928374", 2, 1, 1);
+
+DELETE FROM Endereco WHERE id_endereco = 5;
+
+SELECT v.*, u.nome_usu AS "Nome do Cliente" FROM Venda v, Usuario u WHERE v.fk_id_usuario = u.id_usuario;
