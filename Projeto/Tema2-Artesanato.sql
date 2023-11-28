@@ -40,7 +40,7 @@ FOREIGN KEY (fk_id_cidade) REFERENCES Cidade(id_cidade)
 
 CREATE TABLE IF NOT EXISTS Usuario(
 id_usuario INT PRIMARY KEY AUTO_INCREMENT,
-nome_usu VARCHAR(20) NOT NULL,
+nome_usu VARCHAR(50) NOT NULL,
 email_usu VARCHAR(50) NOT NULL UNIQUE,
 cpf_usu VARCHAR(11) NOT NULL,
 sexo_usu VARCHAR(10) NOT NULL,
@@ -51,7 +51,7 @@ FOREIGN KEY (fk_id_endereco) REFERENCES Endereco(id_endereco)
 
 CREATE TABLE IF NOT EXISTS Transportadora(
 id_transportadora INT PRIMARY KEY AUTO_INCREMENT,
-nome_tran VARCHAR(20) NOT NULL,
+nome_tran VARCHAR(50) NOT NULL,
 telefone_tran VARCHAR(16) NOT NULL,
 fk_id_endereco INT NOT NULL,
 FOREIGN KEY (fk_id_endereco) REFERENCES Endereco(id_endereco)
@@ -59,7 +59,7 @@ FOREIGN KEY (fk_id_endereco) REFERENCES Endereco(id_endereco)
 
 CREATE TABLE IF NOT EXISTS Artesao(
 id_artesao INT PRIMARY KEY AUTO_INCREMENT,
-nome_art VARCHAR(20) NOT NULL,
+nome_art VARCHAR(50) NOT NULL,
 sexo_art VARCHAR(10) NOT NULL,
 telefone_art VARCHAR(16) NOT NULL,
 fk_id_endereco INT NOT NULL,
@@ -110,7 +110,7 @@ FOREIGN KEY (fk_id_produto) REFERENCES Produto(id_produto)
 );
 
 CREATE TABLE IF NOT EXISTS Venda (
-id_venda INT PRIMARY KEY,
+id_venda INT PRIMARY KEY AUTO_INCREMENT,
 valor_total_vend DOUBLE NOT NULL,
 forma_pag_vend VARCHAR(20) NOT NULL,
 cupom_desc_vend DOUBLE NOT NULL,
@@ -174,13 +174,15 @@ INSERT INTO Servico VALUES (NULL, "bordar tecido", 267.50, "Bordar qualquer tipo
 
 INSERT INTO Produto VALUES (NULL, "capa de almofada", 15, 36.75, "Roxo", "30cm", "capa de almofadas para travesseiros caseiros como de estofados", NULL,NULL, 1,1);
 
-UPDATE Estoque SET quantidade_est = 15 WHERE id_estoque = 1;
+UPDATE Estoque SET quantidade_est = quantidade_est + 15 WHERE id_estoque = 1;
 
 INSERT INTO Produto_Categoria VALUES (NULL, 1,1);
 
 INSERT INTO Venda VALUES (NULL, 183.75, "DINHEIRO", NULL, 1);
 
 INSERT INTO Itens_Venda VALUES (NULL, 5, NULL,1,1);
+
+UPDATE Estoque SET quantidade_est = quantidade_est - 5 WHERE id_estoque = 1;
 
 INSERT INTO Entrega VALUES (NULL, "USUARIO", "CASA DO USUARIO", CURDATE(), "NABR0928374", 2, 1, 1);
 
